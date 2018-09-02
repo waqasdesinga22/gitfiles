@@ -1,0 +1,948 @@
+SQL> 
+SQL> DECLARE
+  2  .
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      V_EMPNO EMP.EMPNO%TYPE :=&EMPNO;
+  3      EMP_REC  EMP%ROWTYPE;
+  4  V_CNTR NUMBER :=0;
+  5      BEGIN
+  6      SELECT COUNT(*) INTO V_CNTR FROM SCOTT.EMP WHERE EMPNO=V_EMPNO;
+  7    /*  &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  8      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  9      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+ 10      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 11  */
+ 12  &D(V_CNTR);
+ 13   EXCEPTION
+ 14     WHEN NO_DATA_FOUND THEN
+ 15     &D('RECORD NOT FOUND..');
+ 16*   END;
+ 17  /
+Enter value for empno: 7788
+1
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 457
+0
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      V_EMPNO EMP.EMPNO%TYPE :=&EMPNO;
+  3      EMP_REC  EMP%ROWTYPE;
+  4  V_CNTR NUMBER :=0;
+  5      BEGIN
+  6      SELECT 1 INTO V_CNTR FROM SCOTT.EMP WHERE EMPNO=V_EMPNO;
+  7    /*  &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  8      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  9      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+ 10      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 11  */
+ 12  &D(V_CNTR);
+ 13   EXCEPTION
+ 14     WHEN NO_DATA_FOUND THEN
+ 15     &D('RECORD NOT FOUND..');
+ 16*   END;
+SQL> /
+Enter value for empno: 7788
+1
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for empno: 457
+RECORD NOT FOUND..
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      V_EMPNO EMP.EMPNO%TYPE :=&EMPNO;
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE EMPNO=V_EMPNO;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11     WHEN NO_DATA_FOUND THEN
+ 12     &D('RECORD NOT FOUND..');
+ 13*   END;
+ 14  /
+Enter value for empno: 7788
+EMPLOYEE NAME IS....SCOTT
+EMPLOYEE JOB IS....ANALYST
+EMPLOYEE SALARY IS....4010
+EMPLOYEE DEPTNO IS....20
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for empno: 124
+RECORD NOT FOUND..
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11     WHEN NO_DATA_FOUND THEN
+ 12     &D('RECORD NOT FOUND..');
+ 13*   END;
+ 14  /
+Enter value for job: PRESIDENT
+EMPLOYEE NAME IS....KING
+EMPLOYEE JOB IS....PRESIDENT
+EMPLOYEE SALARY IS....5500
+EMPLOYEE DEPTNO IS....10
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for job: SALES
+RECORD NOT FOUND..
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for job: SALESMAN
+DECLARE
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 5
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11     WHEN NO_DATA_FOUND THEN
+ 12     &D('RECORD NOT FOUND..');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  &D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15*   END;
+ 16  /
+Enter value for job: PRESIDENT
+EMPLOYEE NAME IS....KING
+EMPLOYEE JOB IS....PRESIDENT
+EMPLOYEE SALARY IS....5500
+EMPLOYEE DEPTNO IS....10
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for job: SALE
+RECORD NOT FOUND..
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> /
+Enter value for job: SALESMAN
+RECORDS CAN NOT DISPLAY WITH THIS METHOD...
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11     WHEN NO_DATA_FOUND THEN
+ 12  &D('RECORD NOT FOUND');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  &D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15  WHEN OTHERS THEN
+ 16  &D('ORACLE ERROR '||SQLERRM);
+ 17*   END;
+ 18  /
+Enter value for job: SALESMAN
+RECORDS CAN NOT DISPLAY WITH THIS METHOD...
+
+PL/SQL procedure successfully completed.
+
+SQL> CL SCR
+
+SQL> /
+Enter value for job: PRESIDENT
+EMPLOYEE NAME IS....KING
+EMPLOYEE JOB IS....PRESIDENT
+EMPLOYEE SALARY IS....5500
+EMPLOYEE DEPTNO IS....10
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN OTHERS THEN
+ 12  &D('ORACLE ERROR '||SQLERRM);
+ 13     WHEN NO_DATA_FOUND THEN
+ 14  &D('RECORD NOT FOUND');
+ 15  WHEN TOO_MANY_ROWS THEN
+ 16  &D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 17*   END;
+ 18  /
+Enter value for job: SALESMAN
+WHEN OTHERS THEN
+*
+ERROR at line 11:
+ORA-06550: line 11, column 1:
+PLS-00370: OTHERS handler must be last among the exception handlers of a block
+ORA-06550: line 0, column 0:
+PL/SQL: Compilation unit analysis terminated
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN OTHERS THEN
+ 12  &D('ORACLE ERROR '||SQLERRM);
+ 13*   END;
+ 14  /
+Enter value for job: PRESIDNET
+ORACLE ERROR ORA-01403: no data found
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for job: SALESMAN
+ORACLE ERROR ORA-01422: exact fetch returns more than requested number of rows
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN NO_DATA_FOUND THEN
+ 12  &D('RECORD NOT FOUND');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  &D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15  WHEN OTHERS THEN
+ 16  &D('ORACLE ERROR '||SQLERRM);
+ 17*   END;
+SQL> /
+Enter value for job: SALESMAN
+RECORDS CAN NOT DISPLAY WITH THIS METHOD...
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN NO_DATA_FOUND THEN
+ 12  &D('RECORD NOT FOUND');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  ---D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15  BEGIN
+ 16  FOR  I IN (SELECT *  FROM SCOTT.EMP WHERE JOB=V_JOB) LOOP
+ 17  &D(I.EMPNO||'  '||I.ENAME||'  '||I.JOB||'  '||I.SAL||'  '||I.DEPTNO);
+ 18  END LOOP;
+ 19  END;
+ 20  WHEN OTHERS THEN
+ 21  &D('ORACLE ERROR '||SQLERRM);
+ 22*   END;
+ 23  /
+Enter value for job: SAE
+RECORD NOT FOUND
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for job: PRESIDENT
+EMPLOYEE NAME IS....KING
+EMPLOYEE JOB IS....PRESIDENT
+EMPLOYEE SALARY IS....5500
+EMPLOYEE DEPTNO IS....10
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for job: SALESMAN
+7499  ALLEN  SALESMAN  2731  30
+7521  WARD  SALESMAN  1626  30
+7654  MARTIN  SALESMAN  1626  30
+7844  TURNER  SALESMAN  1951  30
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN NO_DATA_FOUND THEN
+ 12  &D('RECORD NOT FOUND');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  ---D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15  BEGIN
+ 16  &D('EMPNO'||'  '||'ENAME'||'  '||'JOB'||'  '||'SAL'||'  '||'DEPTNO');
+ 17  FOR  I IN (SELECT *  FROM SCOTT.EMP WHERE JOB=V_JOB) LOOP
+ 18  &D(I.EMPNO||'  '||I.ENAME||'  '||I.JOB||'  '||I.SAL||'  '||I.DEPTNO);
+ 19  END LOOP;
+ 20  END;
+ 21  WHEN OTHERS THEN
+ 22  &D('ORACLE ERROR '||SQLERRM);
+ 23*   END;
+SQL> /
+Enter value for job: SALESMAN
+EMPNO  ENAME  JOB  SAL  DEPTNO
+7499  ALLEN  SALESMAN  2731  30
+7521  WARD  SALESMAN  1626  30
+7654  MARTIN  SALESMAN  1626  30
+7844  TURNER  SALESMAN  1951  30
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_JOB EMP.JOB%TYPE :='&JOB';
+  3      EMP_REC  EMP%ROWTYPE;
+  4      BEGIN
+  5      SELECT * INTO EMP_REC FROM SCOTT.EMP WHERE JOB=V_JOB ;
+  6      &D('EMPLOYEE NAME IS....'||EMP_REC.ENAME);
+  7      &D('EMPLOYEE JOB IS....'||EMP_REC.JOB);
+  8      &D('EMPLOYEE SALARY IS....'||EMP_REC.SAL);
+  9      &D('EMPLOYEE DEPTNO IS....'||EMP_REC.DEPTNO);
+ 10   EXCEPTION
+ 11  WHEN NO_DATA_FOUND THEN
+ 12  &D('RECORD NOT FOUND');
+ 13  WHEN TOO_MANY_ROWS THEN
+ 14  ---D('RECORDS CAN NOT DISPLAY WITH THIS METHOD...');
+ 15  BEGIN
+ 16  &D('EMPNO'||'  '||'ENAME'||'  '||'JOB'||'  '||'SAL'||'  '||'DEPTNO');
+ 17  FOR  I IN (SELECT *  FROM SCOTT.EMP WHERE JOB=V_JOB) LOOP
+ 18  &D(I.EMPNO||'  '||I.ENAME||'  '||I.JOB||'  '||I.SAL||'  '||I.DEPTNO);
+ 19  END LOOP;
+ 20  EXCEPTION
+ 21  WHEN OTHERS THEN
+ 22  &D('ORACLE ERROR(NESTED CODE) '||SQLERRM);
+ 23  END;
+ 24  WHEN OTHERS THEN
+ 25  &D('ORACLE ERROR '||SQLERRM);
+ 26*   END;
+ 27  /
+Enter value for job: SALESMAN
+EMPNO  ENAME  JOB  SAL  DEPTNO
+7499  ALLEN  SALESMAN  2731  30
+7521  WARD  SALESMAN  1626  30
+7654  MARTIN  SALESMAN  1626  30
+7844  TURNER  SALESMAN  1951  30
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  BEGIN
+  8  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+  9  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 10  COMMIT;
+ 11  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 12* END;
+ 13  /
+Enter value for empno: 500
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  500
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 501
+Enter value for ename: SCOTT
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  501
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 500
+Enter value for ename: ABC
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+DECLARE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.PK_EMP) violated
+ORA-06512: at line 8
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  BEGIN
+  8  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+  9  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 10  COMMIT;
+ 11  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 12  EXCEPTION
+ 13  WHEN DUP_VAL_ON_INDEX THEN
+ 14  &D('RECORD ALREADY EXISTS....');
+ 15* END;
+ 16  /
+Enter value for empno: 500
+Enter value for ename: ALI
+Enter value for job: SAD
+Enter value for salary: 22
+Enter value for deptno: 20
+RECORD ALREADY EXISTS....
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  BEGIN
+  8  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+  9  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 10  COMMIT;
+ 11  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 12  EXCEPTION
+ 13  WHEN DUP_VAL_ON_INDEX THEN
+ 14  ---D('RECORD ALREADY EXISTS....');
+ 15  DECLARE
+ 16  NEW_ID NUMBER :=0;
+ 17  BEGIN
+ 18  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 19  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 20  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 21  COMMIT;
+ 22  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 23  END;
+ 24* END;
+ 25  /
+Enter value for empno: 
+Enter value for ename: 
+Enter value for job: \
+Enter value for salary: 
+Enter value for deptno: 
+V_EMPNO NUMBER :=;
+                 *
+ERROR at line 2:
+ORA-06550: line 2, column 18:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( - + case mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+continue avg count current exists max min prior sql stddev
+sum variance execute forall merge time timestamp interval
+date <a string literal with character set specification>
+<a number> <a single-quoted SQL string> pipe
+<an alternatively-quoted string literal with character set specification>
+<an alternatively
+ORA-06550: line 5, column 20:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( - + case mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+continue avg count current exists max min prior sql
+ORA-06550: line 6, column 20:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( - + case mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+
+
+SQL> 
+SQL> 
+SQL> CL SCR
+
+SQL> /
+Enter value for empno: 502
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  502
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 502
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  7935 INSTEAD OF 502
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  BEGIN
+  8  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+  9  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 10  COMMIT;
+ 11  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 12  EXCEPTION
+ 13  WHEN DUP_VAL_ON_INDEX THEN
+ 14  ---D('RECORD ALREADY EXISTS....');
+ 15  DECLARE
+ 16  NEW_ID NUMBER :=0;
+ 17  BEGIN
+ 18  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 19  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 20  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 21  COMMIT;
+ 22  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 23  END;
+ 24* END;
+SQL> 
+SQL> /
+Enter value for empno: 600
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  600
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP
+SQL> /
+
+     EMPNO ENAME       JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ----------- --------- ---------- --------- ---------- ---------- ----------
+       500 ALI         SALESMAN                             1000                    30
+       501 SCOTT       SALESMAN                             1000                    30
+       502 ALI         SALESMAN                             1000                    30
+      7935 ALI         SALESMAN                             1000                    30
+       600 ALI         SALESMAN                             1000                    30
+      7369 SMITH       CLERK           7902 17-DEC-80       2320        100         20
+      7499 ALLEN       SALESMAN        7698 20-FEB-81       2731        300         30
+      7521 WARD        SALESMAN        7698 22-FEB-81       1626        500         30
+      7566 JONES       MANAGER         7839 02-APR-81       3600                    20
+      7654 MARTIN      SALESMAN        7698 28-SEP-81       1626       1400         30
+      7698 BLAKE       MANAGER         7839 01-MAY-81       3706                    30
+      7782 CLARK       MANAGER         7839 09-JUN-81       2695                    10
+      7788 SCOTT       ANALYST         7566 19-APR-87       4010          1         20
+      7839 KING        PRESIDENT            17-NOV-81       5500                    10
+      7844 TURNER      SALESMAN        7698 08-SEP-81       1951          0         30
+      7876 ADAMS       CLERK           7788 23-MAY-87       1320                    20
+      7900 JAMES       CLERK           7698 03-DEC-81     1909.7                    30
+      7902 FORD        ANALYST         7566 03-DEC-81       3600                    20
+      7934 MILLER      CLERK           7782 23-JAN-82       1430                    10
+
+19 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  ID NUMBER :=0;
+  8  BEGIN
+  9  SELECT NVL(MAX(EMPNO),7000)+1 INTO ID FROM SCOTT.EMP;
+ 10  IF V_EMPNO=ID THEN
+ 11  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 12  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 13  COMMIT;
+ 14  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 15  ELSE
+ 16  &D('YOUR EMPNO  NOT IN SEQUENCE....');
+ 17  END IF;
+ 18  EXCEPTION
+ 19  WHEN DUP_VAL_ON_INDEX THEN
+ 20  ---D('RECORD ALREADY EXISTS....');
+ 21  DECLARE
+ 22  NEW_ID NUMBER :=0;
+ 23  BEGIN
+ 24  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 25  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 26  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 27  COMMIT;
+ 28  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 29  END;
+ 30* END;
+ 31  /
+Enter value for empno: 300
+Enter value for ename: ALI
+Enter value for job: ALEAM
+Enter value for salary: 933
+Enter value for deptno: 30
+YOUR EMPNO  NOT IN SEQUENCE....
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  NEW_ID NUMBER :=0;
+  8  BEGIN
+  9  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 10  IF V_EMPNO=NEW_ID THEN
+ 11  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 12  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 13  COMMIT;
+ 14  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 15  ELSE
+ 16  --D('YOUR EMPNO  NOT IN SEQUENCE....');
+ 17  BEGIN
+ 18  ---SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 19  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 20  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 21  COMMIT;
+ 22  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 23  END;
+ 24  END IF;
+ 25  EXCEPTION
+ 26  WHEN DUP_VAL_ON_INDEX THEN
+ 27  ---D('RECORD ALREADY EXISTS....');
+ 28  DECLARE
+ 29  NEW_ID NUMBER :=0;
+ 30  BEGIN
+ 31  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 32  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 33  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 34  COMMIT;
+ 35  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 36  END;
+ 37* END;
+ 38  /
+Enter value for empno: 300
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 2000
+Enter value for deptno: 
+V_DEPTNO  NUMBER :=;
+                   *
+ERROR at line 6:
+ORA-06550: line 6, column 20:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( - + case mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+continue avg count current exists max min prior sql stddev
+sum variance execute forall merge time timestamp interval
+date <a string literal with character set specification>
+<a number> <a single-quoted SQL string> pipe
+<an alternatively-quoted string literal with character set specification>
+<an alternatively
+
+
+SQL> /
+Enter value for empno: 300
+Enter value for ename: ALI
+Enter value for job: SALESMAN
+Enter value for salary: 1000
+Enter value for deptno: 30
+RECORD CREATED WITH EMPNO  7936 INSTEAD OF 300
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP WHERE EMPNO=300
+SQL> /
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  V_EMPNO NUMBER :=&EMPNO;
+  3  V_ENAME  VARCHAR2(100) :='&ENAME';
+  4  V_JOB    VARCHAR2(100) :='&JOB';
+  5  V_SAL     NUMBER :=&SALARY;
+  6  V_DEPTNO  NUMBER :=&DEPTNO;
+  7  NEW_ID NUMBER :=0;
+  8  BEGIN
+  9  SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 10  IF V_EMPNO=NEW_ID THEN
+ 11  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 12  VALUES(V_EMPNO,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 13  COMMIT;
+ 14  &D('RECORD CREATED WITH EMPNO  '||V_EMPNO);
+ 15  ELSE
+ 16  --D('YOUR EMPNO  NOT IN SEQUENCE....');
+ 17  BEGIN
+ 18  ---SELECT NVL(MAX(EMPNO),7000)+1 INTO NEW_ID FROM SCOTT.EMP;
+ 19  INSERT INTO EMP(EMPNO,ENAME,JOB,SAL,DEPTNO)
+ 20  VALUES(NEW_ID,V_ENAME,V_JOB,V_SAL,V_DEPTNO);
+ 21  COMMIT;
+ 22  &D('RECORD CREATED WITH EMPNO  '||NEW_ID||' INSTEAD OF '||V_EMPNO);
+ 23  END;
+ 24  END IF;
+ 25  EXCEPTION
+ 26  WHEN OTHERS THEN
+ 27  &D(SQLERRM);
+ 28* END;
+ 29  .
+SQL> 
+SQL> 
+SQL> SPOOL OFF
