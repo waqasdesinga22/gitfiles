@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("imahe1.jpg");
+
+background-size: cover;
+        }
+    .h1
+    {
+        position: absolute;
+        top: 15%;
+        left: 40%;
+        font-size: 50px;
+        font-family: 'Monoton', cursive;
+font-family: 'Audiowide', cursive;
+color: white;
+
+    }
+    .text
+    {
+     width: 580px;   
+color: chartreuse;
+outline: none;
+
+font-size: 25px;
+text-align: center;
+background-color: transparent;
+
+    border-bottom: 3px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+
+    }
+    input::placeholder {
+ 
+  
+  color:darkblue;
+}
+    .div1para{
+        color: whitesmoke;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 17px;
+       margin: 8px ;
+       position: absolute;
+       top: 28%;
+       left: 41%;
+    }
+    #inputdiv
+    {
+position: absolute;
+top:30%;
+left: 28%;
+width: 650px;
+height: 70px;
+
+
+
+
+
+    }
+    .img{
+        background-image: url("plus button_new.png");
+        width: 60px;
+        height: 60px;
+        background-size: cover;
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+    .three_dots{
+        background-image: url("vertical.png");
+        background-size: cover;
+outline: none;
+border: none;
+
+position: absolute;
+top: 2%;
+left: 97%;
+background-color: transparent;
+width: 40px;
+height: 40px;
+        }    
+    #list
+    {
+        
+        overflow-y: auto;
+
+        overflow-x:hidden;
+        position: absolute;
+top:48%;
+left: 28%;
+width:578px;
+height: 300px;
+border-style: groove;
+border-color: wheat;
+
+    }
+    .task
+    {
+color: whitesmoke;
+border:none;
+font-size: 22px;
+position: absolute;
+top: 10%;
+outline: none;
+background-color: transparent;
+    }
+    li{
+        
+        width: 95%;
+        border-style: groove;
+        border-color: silver;
+    border-radius: 5px;
+        list-style-type: square;
+        font-size: 25px;
+        color: white;
+        
+    }
+    /* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.none{
+display: none;
+    background-color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 8%;
+    left: 92.5%;
+    width: 90px;
+    outline: none;
+    border: none;
+    text-align: left;
+
+}
+.none:hover{
+    background-color: blue;
+}
+.show{
+visibility: visible;
+background-color: white;
+font-size: 16px;
+position: absolute;
+top: 8%;
+left: 92%;
+width: 90px;
+outline: none;
+border: none;
+text-align: left;
+
+}
+.show:hover{
+background-color: blue;
+}
+.div_rep
+{
+    visibility: hidden;
+border-radius: 5px;
+border-style: groove;
+border-color: black;
+position: absolute;
+top:42%;
+left: 37%;
+width:320px;
+}
+.div_rep1
+{
+   
+border-radius: 5px;
+border-style: groove;
+border-color: black;
+position: absolute;
+top:42%;
+left: 37%;
+width:320px;
+visibility: visible;
+}
+
+.rep_text
+{
+    border-color: blanchedalmond;
+background-color: transparent;
+font-size:20px;
+text-align: center;
+
+}
+.replace{
+background-color: blue;
+color: whitesmoke;
+font-size: 15px;
+height: 29px;
+}
+.deletcss{
+    position: absolute;
+    left: 85%;
+    width: 30px;
+    height: 30px;
+    background-image: url("Delete_Icon.png");
+    background-size: cover;
+    background-color: transparent;
+outline: none;
+border: none;
+}
+.editcss{
+    position: absolute;
+    left: 90%;
+    width: 30px;
+    height: 30px;
+    background-image: url("Edit-icon.png");
+    background-size: cover;
+    background-color: transparent;
+    outline: none;
+border: none;
+}
+    </style>
+</head>
+<body>
+    
+<h1 class="h1" >
+   <b>  TodoList  </b>  
+</h1>
+<p class="div1para">
+        Welcome to TodoApp....
+</p>
+<input type="button" class="three_dots" onclick="clearall()" >
+<div id="inputdiv" class="input" >
+
+
+
+</div>
+<div id="list" class="list">
+   
+
+</div>
+<input type="submit" name="btn"  value="ClearAll" class="none" id="clearitems" onclick="a()" onblur="hide()" >
+
+    <div class="div_rep" id="div_rep">
+<input type="text" name="rep_text" id="rep_text" class="rep_text">
+<input type="submit" value="replace" name="replace" id="replace" class="replace">
+
+    </div>
+
+    <script src="app.js">  </script>
+</body>
+</html>
